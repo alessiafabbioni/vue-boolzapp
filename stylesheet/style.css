@@ -107,12 +107,24 @@
 
 }
 
+.wa-profile-head {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 .wa-input{
     position: absolute;
     bottom: 0;
     width: 100%;
     min-height: 30px;
     backdrop-filter: blur(10px);
+}
+
+.wa-responder {
+    background-color: aqua;
+    height: 100%;
+    width: 100%;
 }
 
 
