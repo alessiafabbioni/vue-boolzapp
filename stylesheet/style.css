@@ -76,8 +76,11 @@
 
 .wa-people{
     flex-grow: 1;
-    border-bottom: 1px solid #EAEAEA;
     overflow: scroll;
+}
+
+.wa-profile-list {
+    border-bottom: 1px solid #EAEAEA;
 }
 
 .wa-usermess {
