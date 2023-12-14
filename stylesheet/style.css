@@ -91,6 +91,7 @@
 .wa-usermess {
     display: flex;
     flex-direction: column;
+    flex-grow: 13;
 }
 
 .wa-times {
