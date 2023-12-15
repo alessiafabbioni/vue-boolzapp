@@ -174,10 +174,14 @@ createApp({
                 }
             ], 
 
+            selectedContact: null,
             
         }
     },
     methods: {
+        selectContact (contact) {
+            this.selectedContact = contact;
+        },
         
     },
     mounted() {
