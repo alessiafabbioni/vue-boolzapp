@@ -174,13 +174,14 @@ createApp({
                 }
             ], 
 
-            selectedContact: null,
+            selectedContact: 0,
             
         }
     },
     methods: {
-        selectContact (contact) {
-            this.selectedContact = contact;
+        selectContact (index) {
+            this.selectedContact = index;
+            console.log(this.selectedContact);
         },
         
     },
