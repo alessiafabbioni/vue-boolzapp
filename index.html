@@ -94,13 +94,13 @@
                   <div id="chat" class="col-lg-9 col-md-6 col-sm-6 wa-chat">
 
                     <!-- header -->
-                    <div class="wa-profile wa-profile-back wa-profile-head">
+                    <div v-for="(contact, index) in contacts" :key="index" class="wa-profile wa-profile-back wa-profile-head">
                         <div class="col p-3">
-                            <img src="avatar-boolzap/avatar_1.jpg" alt="avatar 1">
+                            <img :src="contact.avatar" alt="contact.name">
 
                         </div>
                         <div class="col wa-usermess">
-                            <span>Michele</span>
+                            <span>{{ contact.name }}</span>
                             <span><small>Ultimo accesso oggi ore 12:00</small></span>
                         </div>
                         <div class="col icon">
@@ -113,17 +113,13 @@
                     <!-- main chat -->
                     <div class="container-fluid">
                         <div class="chat-messages">
-                            <div class="message received">
-                              <p class="message-content">Ciao</p>
-                              <span class="message-time">12:30 PM</span>
+                            <div v-for="(contact, index) in contacts" :key="index">
+                                <div v-if="contact.messages" v-for="(message, msgIndex) in contact.messages" :key="msgIndex" :class="{ 'message received': message.status === 'received', 'message sent': message.status === 'sent' }" class="message">
+                                    <p class="message-content">{{ message.message }}</p>
+                                    <span class="message-time">{{ message.date }}</span>
+                                </div>
                             </div>
-                            <div class="message sent">
-                              <p class="message-content">Dimmi tutto</p>
-                              <span class="message-time">12:35 PM</span>
-                            </div>
-                          </div>
-
-
+                        </div>
                     </div>
 
                     <!-- chat input box -->
