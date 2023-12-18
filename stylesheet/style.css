@@ -44,9 +44,6 @@
 
 }
 
-.wa-container-messages {
-    height: 80%;
-}
 
 
 /* SIDEBAR */
@@ -132,10 +129,16 @@
 }
 
 
+/* MESSAGES */
+
+.wa-container-messages {
+    height: 80%;
+}
+
 .chat-messages {
     padding: 10px;
     overflow-y: scroll;
-    max-height: 300px;
+    max-height: 60vh;
     margin-top: 70px;
 }
 

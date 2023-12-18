@@ -112,7 +112,7 @@
                     </div>
                     
                     <!-- main chat -->
-                    <div class="wa-container-messages">
+                    <div class="container-fluid">
                         <div class="chat-messages">
                             <div v-if="contacts[selectedContact].messages" v-for="(message, msgIndex) in contacts[selectedContact].messages" :key="msgIndex" :class="{ 'message received': message.status === 'received', 'message sent': message.status === 'sent' }" class="message">
                                 <div>
