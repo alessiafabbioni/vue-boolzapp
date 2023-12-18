@@ -174,11 +174,14 @@ createApp({
                 }
             ], 
 
+            //variabili
             selectedContact: 0,
             
         }
     },
     methods: {
+
+        //funzione per selezionare la chat specifica 
         selectContact (index) {
             this.selectedContact = index;
             console.log(this.selectedContact);

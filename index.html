@@ -71,7 +71,7 @@
 
                     <!-- People row -->
                     <div class="container-fluid wa-people">
-                        <div v-for="(contact, index) in contacts" :key="index" class="wa-profile wa-profile-list" @click="selectContact(contact)">
+                        <div v-for="(contact, index) in contacts" :key="index" class="wa-profile wa-profile-list" @click="selectContact(index)">
                             <div class="col-2">
                                 <img :src="contact.avatar" alt="contact.name">
                             </div>
@@ -94,13 +94,13 @@
                   <div id="chat" class="col-lg-9 col-md-6 col-sm-6 wa-chat">
 
                     <!-- header -->
-                    <div v-for="(contact, index) in contacts" :key="index" class="wa-profile wa-profile-back wa-profile-head">
+                    <div class="wa-profile wa-profile-back wa-profile-head">
                         <div class="col p-3">
-                            <img :src="contact.avatar" alt="contact.name">
+                            <img :src="contacts[selectedContact].avatar" alt="contact.name">
 
                         </div>
                         <div class="col wa-usermess">
-                            <span>{{ contact.name }}</span>
+                            <span>{{ contacts[selectedContact].name }}</span>
                             <span><small>Ultimo accesso oggi ore 12:00</small></span>
                         </div>
                         <div class="col icon">
@@ -113,11 +113,9 @@
                     <!-- main chat -->
                     <div class="container-fluid">
                         <div class="chat-messages">
-                            <div v-for="(contact, index) in contacts" :key="index">
-                                <div v-if="contact.messages" v-for="(message, msgIndex) in contact.messages" :key="msgIndex" :class="{ 'message received': message.status === 'received', 'message sent': message.status === 'sent' }" class="message">
-                                    <p class="message-content">{{ message.message }}</p>
-                                    <span class="message-time"><small>{{ message.date }}</small></span>
-                                </div>
+                            <div v-if="contacts[selectedContact].messages" v-for="(message, msgIndex) in contacts[selectedContact].messages" :key="msgIndex" :class="{ 'message received': message.status === 'received', 'message sent': message.status === 'sent' }" class="message">
+                                <p class="message-content">{{ message.message }}</p>
+                                <span class="message-time"><small>{{ message.date }}</small></span>
                             </div>
                         </div>
                     </div>
