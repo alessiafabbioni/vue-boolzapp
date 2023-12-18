@@ -224,7 +224,7 @@ createApp({
                 else 
                     contact.visible = true;
             });
-            
+
 
         }, 
 

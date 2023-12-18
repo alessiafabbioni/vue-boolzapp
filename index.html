@@ -115,8 +115,20 @@
                     <div class="wa-container-messages">
                         <div class="chat-messages">
                             <div v-if="contacts[selectedContact].messages" v-for="(message, msgIndex) in contacts[selectedContact].messages" :key="msgIndex" :class="{ 'message received': message.status === 'received', 'message sent': message.status === 'sent' }" class="message">
-                                <p class="message-content">{{ message.message }}</p>
-                                <span class="message-time"><small>{{ message.date }}</small></span>
+                                <div>
+                                    <p class="message-content">{{ message.message }}</p>
+                                    <span class="message-time"><small>{{ message.date }}</small></span>
+                                </div>
+                                <div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split wa-btn px-3" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Delete message</a></li>
+                                            <li><a class="dropdown-item" href="#">Message info</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>

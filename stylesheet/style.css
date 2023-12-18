@@ -126,61 +126,54 @@
     backdrop-filter: blur(10px);
 }
 
-/* .wa-responder {
-    display: flex;
-    width: auto;
-    flex-direction: row;
-    justify-content: flex-start;
-    background-color: gray;
-    margin-left: ;
-}
-
-.wa-texter */
-
-
 
 .chat-messages {
     padding: 10px;
     overflow-y: scroll;
     max-height: 300px;
     margin-top: 70px;
-  }
+}
 
-  .message {
+.message {
     margin-bottom: 10px;
     padding: 8px;
     border-radius: 5px;
     clear: both;
-  }
+    display: flex;
+    flex-direction: row;
+}
 
-  .message.sent {
+.message.sent {
     background-color: #e5f5e5;
     float: right;
-  }
+}
 
-  .message.received {
+.message.received {
     background-color: #fff;
     float: left;
-  }
+}
 
-  .message-content {
+.message-content {
     margin: 0;
-  }
+}
 
-  .message.sent .message-content {
+.message.sent .message-content {
     color: #333;
-  }
+}
 
-  .message.received .message-content {
+.message.received .message-content {
     color: #333;
-  }
+}
 
-  .message-time {
+.message-time {
     font-size: 12px;
     color: #777;
     margin-top: 5px;
-  }
+}
 
+.wa-btn {
+    border: none;
+}
 
 
 /* ELEMENTS */
