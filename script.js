@@ -223,9 +223,9 @@ createApp({
                     contact.visible = contactName.includes(searchPerson);
                 else 
                     contact.visible = true;
-           });
+            });
             
-            
+
         }, 
 
     },
