@@ -178,7 +178,7 @@ createApp({
             selectedContact: 0,
             newMessage: '',
             newGetMessage: 'Perfetto',
-            
+            searchPerson: '',
         }
     },
     methods: {
@@ -210,7 +210,23 @@ createApp({
 
                 this.contacts[this.selectedContact].messages.push(receivedMessage); 
             }, 3000);
+
         },
+
+        //logica per la ricerca delle persone 
+        searchContacts() {
+            const searchPerson = this.searchPerson.toLowerCase();
+            
+            this.contacts.forEach((contact) => {
+                const contactName = contact.name.toLowerCase();
+                if (searchPerson.length > 0)
+                    contact.visible = contactName.includes(searchPerson);
+                else 
+                    contact.visible = true;
+           });
+            
+            
+        }, 
 
     },
     mounted() {

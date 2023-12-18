@@ -63,7 +63,7 @@
                             <form class="container-fluid">
                               <div class="input-group">
                                 <span class="input-group-text" id="search"><i class="fa-solid fa-magnifying-glass"></i></span>
-                                <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Cerca" aria-describedby="search-bar">
+                                <input v-model="searchPerson" type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Cerca" aria-describedby="search-bar" @input="searchContacts">
                               </div>
                             </form>
                           </nav>
@@ -71,16 +71,18 @@
 
                     <!-- People row -->
                     <div class="container-fluid wa-people">
-                        <div v-for="(contact, index) in contacts" :key="index" class="wa-profile wa-profile-list" @click="selectContact(index)">
-                            <div class="col-2">
-                                <img :src="contact.avatar" alt="contact.name">
-                            </div>
-                            <div class="col-9 wa-usermess">
-                                <span>{{ contact.name }}</span>
-                                <span><small>Ultimo messaggio inviato</small></span>
-                            </div>
-                            <div class="col-1 wa-times">
-                                <span><small>12:00</small></span>
+                        <div v-for="(contact, index) in contacts" :key="index" @click="selectContact(index)">
+                            <div class="wa-profile wa-profile-list" v-if="contact.visible">
+                                <div class="col-2">
+                                    <img :src="contact.avatar" alt="contact.name">
+                                </div>
+                                <div class="col-9 wa-usermess">
+                                    <span>{{ contact.name }}</span>
+                                    <span><small>Ultimo messaggio inviato</small></span>
+                                </div>
+                                <div class="col-1 wa-times">
+                                    <span><small>12:00</small></span>
+                                </div>
                             </div>
                         </div>
 
