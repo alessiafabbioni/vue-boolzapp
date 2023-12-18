@@ -177,6 +177,7 @@ createApp({
             //variabili
             selectedContact: 0,
             newMessage: '',
+            newGetMessage: 'Perfetto',
             
         }
     },
@@ -199,6 +200,16 @@ createApp({
             //resetto campo input
             this.newMessage = '';
             console.log(sendMessage);
+
+            //logica per la ricezione del messaggio automatico
+            setTimeout(() => {
+                const receivedMessage = {
+                    message: this.newGetMessage,
+                    status: 'received'
+                };
+
+                this.contacts[this.selectedContact].messages.push(receivedMessage); 
+            }, 3000);
         },
 
     },
