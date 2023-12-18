@@ -176,6 +176,7 @@ createApp({
 
             //variabili
             selectedContact: 0,
+            newMessage: '',
             
         }
     },
@@ -186,7 +187,20 @@ createApp({
             this.selectedContact = index;
             console.log(this.selectedContact);
         },
-        
+
+        //logica per mandare un messaggio
+        sendNewMessage() {
+            const sendMessage = {
+                message: this.newMessage,
+                status: 'sent',
+            };
+
+            this.contacts[this.selectedContact].messages.push(sendMessage);
+            //resetto campo input
+            this.newMessage = '';
+            console.log(sendMessage);
+        },
+
     },
     mounted() {
         

@@ -111,7 +111,7 @@
                     </div>
                     
                     <!-- main chat -->
-                    <div class="container-fluid">
+                    <div class="wa-container-messages">
                         <div class="chat-messages">
                             <div v-if="contacts[selectedContact].messages" v-for="(message, msgIndex) in contacts[selectedContact].messages" :key="msgIndex" :class="{ 'message received': message.status === 'received', 'message sent': message.status === 'sent' }" class="message">
                                 <p class="message-content">{{ message.message }}</p>
@@ -127,7 +127,7 @@
                         </div>
 
                         <div class="col-10">
-                            <input type="text" class="form-control" placeholder="Scrivi messaggio" aria-label="message" aria-describedby="message">
+                            <input v-model="newMessage" type="text" class="form-control" placeholder="Scrivi messaggio" aria-label="message" aria-describedby="message" @keyup.enter="sendNewMessage()">
                         </div>
 
                         <div class="col-1 icon">
