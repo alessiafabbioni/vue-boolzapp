@@ -98,6 +98,11 @@
     flex-grow: 5;
 }
 
+.wa-dropdown {
+    font-size: 6px;
+    margin: 0;
+}
+
 .wa-times {
     display: flex;
     justify-content: flex-end;

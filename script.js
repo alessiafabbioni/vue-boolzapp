@@ -228,6 +228,12 @@ createApp({
 
         }, 
 
+        //logica per la cancellazione dei messaggi al momento del click
+        
+        deleteMessage(msgIndex) {
+            this.contacts[this.selectedContact].messages.splice(msgIndex, 1);
+        },
+
     },
     mounted() {
         

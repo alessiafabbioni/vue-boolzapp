@@ -121,9 +121,11 @@
                                 </div>
                                 <div>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split wa-btn px-3" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary  wa-btn px-3 m-0" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-chevron-down wa-dropdown"></i>
+                                        </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Delete message</a></li>
+                                            <li><a class="dropdown-item" href="#" @click="deleteMessage(msgIndex)">Delete message</a></li>
                                             <li><a class="dropdown-item" href="#">Message info</a></li>
                                         </ul>
                                     </div>
