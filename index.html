@@ -142,11 +142,12 @@
                         </div>
 
                         <div class="col-10">
-                            <input v-model="newMessage" type="text" class="form-control" placeholder="Scrivi messaggio" aria-label="message" aria-describedby="message" @keyup.enter="sendNewMessage()">
+                            <input v-model="newMessage" type="text" class="form-control" placeholder="Scrivi messaggio" aria-label="message" aria-describedby="message" @input="userTyping" @keyup.enter="sendNewMessage()">
                         </div>
 
                         <div class="col-1 icon">
-                            <i class="fa-solid fa-microphone" style="color: #b1b1b1;"></i>
+                            <i v-if="!isTyping" class="fa-solid fa-microphone" style="color: #b1b1b1;"></i>
+                            <i v-if="isTyping" class="fa-solid fa-paper-plane" style="color: #b1b1b1;" @click="sendNewMessage()"></i>
                         </div>
 
                     </div>

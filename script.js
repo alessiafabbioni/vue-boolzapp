@@ -179,6 +179,7 @@ createApp({
             newMessage: '',
             newGetMessage: 'Perfetto',
             searchPerson: '',
+            isTyping: false,
         }
     },
     methods: {
@@ -194,11 +195,14 @@ createApp({
             const sendMessage = {
                 message: this.newMessage,
                 status: 'sent',
+                /* TODO: Aggiungi la parte riguardante le date*/
             };
 
             this.contacts[this.selectedContact].messages.push(sendMessage);
             //resetto campo input
             this.newMessage = '';
+            //reinposto is typing
+            this.isTyping = false;
             console.log(sendMessage);
 
             //logica per la ricezione del messaggio automatico
@@ -207,6 +211,7 @@ createApp({
                     message: this.newGetMessage,
                     status: 'received'
                 };
+                /* TODO: Aggiungi la parte riguardante le date*/
 
                 this.contacts[this.selectedContact].messages.push(receivedMessage); 
             }, 3000);
@@ -232,6 +237,12 @@ createApp({
         
         deleteMessage(msgIndex) {
             this.contacts[this.selectedContact].messages.splice(msgIndex, 1);
+        },
+
+        //logica per cambiare l'icona 
+
+        userTyping() {
+            this.isTyping = this.newMessage.trim() !== '';
         },
 
     },
