@@ -7,6 +7,7 @@ const { createApp } = Vue;
 
 createApp({
     data() {
+
         return {
 
             contacts: [
@@ -192,10 +193,18 @@ createApp({
 
         //logica per mandare un messaggio
         sendNewMessage() {
+
+            //logica per verificare che il messaggio non sia vuoto
+            /*if (this.newMessage.trim() === '') {
+                return; 
+            };*/
+
+
             const sendMessage = {
                 message: this.newMessage,
                 status: 'sent',
-                /* TODO: Aggiungi la parte riguardante le date*/
+                date: luxon.DateTime.local().toLocaleString(luxon.DateTime.DATETIME_MED),
+                
             };
 
             this.contacts[this.selectedContact].messages.push(sendMessage);
@@ -209,9 +218,10 @@ createApp({
             setTimeout(() => {
                 const receivedMessage = {
                     message: this.newGetMessage,
-                    status: 'received'
+                    status: 'received',
+                    date: luxon.DateTime.local().toLocaleString(luxon.DateTime.DATETIME_MED),
                 };
-                /* TODO: Aggiungi la parte riguardante le date*/
+                
 
                 this.contacts[this.selectedContact].messages.push(receivedMessage); 
             }, 3000);
