@@ -15,6 +15,7 @@ createApp({
                     name: 'Michele',
                     avatar: './avatar-boolzap/avatar_1.jpg',
                     visible: true,
+                    lastAccess: '2023-01-01T12:34:56',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -37,6 +38,7 @@ createApp({
                     name: 'Fabio',
                     avatar: './avatar-boolzap/avatar_2.jpg',
                     visible: true,
+                    lastAccess: '2023-01-01T12:34:56',
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -59,6 +61,7 @@ createApp({
                     name: 'Samuele',
                     avatar: './avatar-boolzap/avatar_3.jpg',
                     visible: true,
+                    lastAccess: '2023-01-01T12:34:56',
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -81,6 +84,7 @@ createApp({
                     name: 'Alessandro B.',
                     avatar: './avatar-boolzap/avatar_4.jpg',
                     visible: true,
+                    lastAccess: '2023-01-01T12:34:56',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -98,6 +102,7 @@ createApp({
                     name: 'Alessandro L.',
                     avatar: './avatar-boolzap/avatar_1.jpg',
                     visible: true,
+                    lastAccess: '2023-01-01T12:34:56',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -115,6 +120,7 @@ createApp({
                     name: 'Claudia',
                     avatar: './avatar-boolzap/avatar_2.jpg',
                     visible: true,
+                    lastAccess: '2023-01-01T12:34:56',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -137,6 +143,7 @@ createApp({
                     name: 'Federico',
                     avatar: './avatar-boolzap/avatar_3.jpg',
                     visible: true,
+                    lastAccess: '2023-01-01T12:34:56',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -154,6 +161,7 @@ createApp({
                     name: 'Davide',
                     avatar: './avatar-boolzap/avatar_4.jpg',
                     visible: true,
+                    lastAccess: '2023-01-01T12:34:56',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -178,9 +186,10 @@ createApp({
             //variabili
             selectedContact: 0,
             newMessage: '',
-            newGetMessage: 'Perfetto',
+            newGetMessage: "Perfetto",
             searchPerson: '',
             isTyping: false,
+            isOnline: 'Ultimo accesso alle {{ lastAccessTime() }}',
         }
     },
     methods: {
@@ -194,11 +203,6 @@ createApp({
         //logica per mandare un messaggio
         sendNewMessage() {
 
-            //logica per verificare che il messaggio non sia vuoto
-            /*if (this.newMessage.trim() === '') {
-                return; 
-            };*/
-
 
             const sendMessage = {
                 message: this.newMessage,
@@ -210,8 +214,8 @@ createApp({
             this.contacts[this.selectedContact].messages.push(sendMessage);
             //resetto campo input
             this.newMessage = '';
-            //reinposto is typing
-            this.isTyping = false;
+            
+            
             console.log(sendMessage);
 
             //logica per la ricezione del messaggio automatico
@@ -221,10 +225,11 @@ createApp({
                     status: 'received',
                     date: luxon.DateTime.local().toLocaleString(luxon.DateTime.DATETIME_MED),
                 };
-                
-
                 this.contacts[this.selectedContact].messages.push(receivedMessage); 
             }, 3000);
+
+
+
 
         },
 
@@ -253,6 +258,13 @@ createApp({
 
         userTyping() {
             this.isTyping = this.newMessage.trim() !== '';
+        },
+
+        //logica per ottenere l'ultimo accesso reale della persona
+        lastAccessTime() {
+            const lastAccess = this.contacts[this.selectedContact].lastAccess;
+            return luxon.DateTime.fromISO(lastAccess).toLocaleString(luxon.DateTime.TIME_24_SIMPLE);
+            console.log(lastAccess);
         },
 
     },
